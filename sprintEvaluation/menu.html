@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body{
+            background-color: rgb(253, 208, 208);
+        }
+        #parent{
+            width:90%;
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            margin:100px auto;
+            text-align: center;
+        }
+        #parent >div{
+            width:90%;
+            /* height: 300px; */
+            margin: 2%;
+            padding: 2%;
+            background-color: brown;
+            color: white;
+            border-radius: 10%;
+
+        }
+        #parent >div>div>img{
+            width:90%;
+            height: 300px;
+            border-radius: 10%;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id= 'parent'>
+        <div id="01">
+            <div><img id="pic" src="https://myheartbeets.com/wp-content/uploads/2014/05/kadai-chicken-recipe-500x375.jpg" ></div>
+            <p id="name">biryani</p>
+            <p id="price"> 1000</p>
+            <p id="time">Time : 2hr</p>
+            <p id="Des">It is Lucknow Origin Dish</p>
+            <button onclick="addToCart('01')">AddtoCart</button>
+
+        </div>
+        <div id="02">
+            <div><img id="pic" src="https://myheartbeets.com/wp-content/uploads/2014/05/kadai-chicken-recipe-500x375.jpg" ></div>
+            <p id="name">Chicken kadhai</p>
+            <p id="price"> 1000</p>
+            <p id="time">Time : 2hr</p>
+            <p id="Des">It is Lucknow Origin Dish</p>
+            <button onclick="addToCart('02')">AddtoCart</button>
+        </div>
+        <div id="03">
+            <div><img id="pic" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2013/01/kadai-chicken-recipe-1-500x500.jpg" ></div>
+            <p id="name">Qurma</p>
+            <p id="price"> 1000</p>
+            <p id="time">Time : 2hr</p>
+            <p id="Des">It is Lucknow Origin Dish</p>
+            <button onclick="addToCart('03')">AddtoCart</button>
+
+        </div >
+        <div id = "04">
+            <div><img id="pic" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2013/01/kadai-chicken-recipe-1-500x500.jpg" ></div>
+            <p id="name">Garlic fry</p>
+            <p id="price"> 1000</p>
+            <p id="time">Time : 2hr</p>
+            <p id="Des">It is Lucknow Origin Dish</p>
+            <button onclick="addToCart('04')">AddtoCart</button>
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+<script>
+    function addToCart(xyz){
+        var dish = document.getElementById(`${xyz}`)
+        var name = document.getElementById("name")
+        console.log(name)
+        // let price =Number(document.getElementById('price').innerText) 
+
+        let time = document.getElementById('time').innerText
+        let pic = document.getElementById('pic').src
+
+       
+         
+        var item = {
+            name,
+            time,
+            price,
+            pic
+        }
+        
+        console.log(item)
+        let arr = localStorage.getItem("dishes")
+        if(arr == null){
+            arr =[]
+        }
+        else{
+            arr = JSON.parse(arr)
+        }
+        arr.push(item)
+        localStorage.setItem("dishes",JSON.stringify(arr))
+        
+        timer() 
+    }
+    
+    function timer(){
+        setTimeout(function(){
+            alert("Your Order Has placed")
+        },0)
+        setTimeout(function(){
+            alert("Your order is being cooked")
+        },3000)
+        setTimeout(function(){
+            alert("Your order is ready")
+        },3000)
+    }
+</script>

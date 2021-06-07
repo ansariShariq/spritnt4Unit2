@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index.html</title>
+    <style>
+        #navbar{
+            width:  80%;
+            background-color: black;
+            height:40px;
+            text-align: right;
+            margin:50px auto;
+        }
+        #navbar >button{
+            width:100px;
+            height: 30px;
+            padding: 3px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <button onclick="logIn()">Log In</button>
+        <button onclick="signIn()">Sign In</button>
+        <button onclick="menu()">Menu</button>
+
+
+    </div>
+</body>
+</html>
+<script>
+    function logIn(){
+        window.location.href = "logIn.html"
+    }
+    function signIn(){
+        window.location.href = "signIn.html"
+    }
+    function menu(){
+        window.location.href = "menu.html"
+    }
+</script>

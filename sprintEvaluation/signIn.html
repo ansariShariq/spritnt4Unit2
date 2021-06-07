@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        form{
+            width: 40%;
+            margin: 100px auto;
+            
+        }
+        form>input{
+            margin-bottom: 20px;
+            height: 30px;
+            font-size: 25px;
+        }
+        #sub{
+            width: 300px;
+            height: 50px;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Please Sign In</h1>
+    <div>
+        <form id="signInForm">
+            <input type="text" id="name" placeholder="Enter Your Name">
+            <br>
+            <input type="number" id="contactNo" placeholder="Enter Contact No">
+            <br>
+            <input type="email" id="email" placeholder="Enter Email ID">
+            <br>
+            <input type="password" id="password" placeholder= "Create Password">
+            <br>
+            <input id="sub" type="submit" value="Submit" onclick="addTostorage(event)">
+            
+        </form>
+    </div>
+</body>
+</html>
+<script>
+   function addTostorage(e){
+       e.preventDefault()
+        var form = document.getElementById('signInForm')
+        var name = form.name.value
+        var contactNo = form.contactNo.value
+        var email = form.email.value
+
+        var password = form.password.value
+        if(form.name.value == "" ||form.contactNo.value ==""||form.email.value == ""||form.password.value==""){
+            alert("Kindly fill all the values")
+        }
+        else{
+            var details = {
+           name,
+           contactNo,
+           email,
+           password
+       }
+    //    console.log(details)
+    var arr = localStorage.getItem('info')
+
+    if(arr == null){
+        arr = []
+    }
+    else{
+        arr = JSON.parse(localStorage.getItem('info'))
+    }
+    arr.push(details)
+
+    localStorage.setItem("info",JSON.stringify(arr))
+    form.email.value = null
+    form.name.value = null
+    form.password.value = null
+    form.contactNo.value = null
+        }
+       // console.log(name,contactNo,email,password)
+
+    
+
+    }
+</script>

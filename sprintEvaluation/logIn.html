@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In here</title>
+    <style>
+        form{
+            width:30%;
+            margin:300px auto;
+        }
+        form>input,form>label{
+            height: 40px;
+            font-size: 35px;
+            margin:10px;
+        }
+        #sum{
+            width:300px;
+            background-color: black;
+            color:white;
+            height: 50px;
+            font-size: 35px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body><h1>Login In</h1>
+    <form id="logInForm">
+    
+
+        <label>Username:</label><br>
+        <input type="text" id="emailV" placeholder="for e.g name@123 ">
+        <br>
+        <label >Password:</label>
+        <br>
+        <input type="password" id="passwordV" placeholder = "Your Password">
+        <br>
+        <input id="sum" type="submit" onclick="verify(event)">
+    </form>
+</body>
+</html>
+<script>
+    function verify(e){
+
+        e.preventDefault()
+
+        var data = JSON.parse(localStorage.getItem('info'))
+        // console.log(data)
+
+        var form = document.getElementById('logInForm')
+        var emailV =form.emailV.value
+        var passwordV = form.passwordV.value
+        console.log(passwordV,emailV)
+        if(form.passwordV.value ==""||form.emailV.value == ""){
+            alert("Kindly fill all the values")
+        }
+        else{
+            var count = 0
+            data.forEach(function(el) {
+               //console.log(el.email,el.password)
+               
+                if(emailV != el.email && passwordV != el.password && count ==0){
+                    count++
+                    alert("Invalid Credentials")
+                    
+                }
+                else{
+                    menu()
+                }
+                
+            });
+        }
+    }
+    function menu(){
+        window.location.href = "menu.html"
+    }
+</script>
